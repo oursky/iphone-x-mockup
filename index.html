@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta encoding="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone X Instant Mockup - MockUPhone</title>
+    <link rel="stylesheet" type="text/css" href="devices.css" />
+  </head>
+  <body>
+  <style>
+  .device  {
+    margin: auto;
+    margin-bottom: 40px;
+  }
+
+  .device .device-content {
+    overflow: hidden;
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url('mockuphone-iphonex-example.png');
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  body {
+    background: #f3f3f3;
+    font-family: 'lato', 'Arial', sans-serif;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  .mup-container{
+    width: 100%;
+    margin: auto;
+    max-width: 400px;
+
+  }
+
+  h1 {
+    color: #134E5E;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 20px;
+  }
+  .instructions {
+    color: #666;
+  }
+
+
+  .drop-text {
+    z-index: 10;
+    width: 200px;
+    padding: 4px;
+    border-radius: 4px;
+    margin: auto;
+    top: 300px;
+    position: relative;
+    cursor: pointer;
+    color: #aaa;
+    background: rgba(0,0,0,0.1);
+  }
+
+  footer {
+    background: #134E5E;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    padding: 20px;
+    min-height: 20px;
+  /*  position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 15;*/
+    color: #eee;
+  }
+
+  footer a {
+    color: #53e0b9;
+  }
+
+  @-webkit-keyframes bummer {
+      100% {
+          -webkit-transform: scale(1,1);
+      }
+  }
+
+  @keyframes bummer {
+      100% {
+          transform: scale(1,1);
+      }
+  }
+
+  .animate {
+    -webkit-animation: bummer 0.6s;
+    animation: bummer 0.6s;
+    -webkit-transform: scale(0.3,0.3); 
+    transform: scale(0.3,0.3);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+
+  .animate-bg {
+    -webkit-transition: background-image 0.1s ease-in;
+    -moz-transition: background-image 0.1s ease-in;
+    -ms-transition: background-image 0.1s ease-in;
+    transition: background-image 0.1s ease-in;
+
+    -webkit-transition: background 0.1s ease-in;
+    -moz-transition: background 0.1s ease-in;
+    -ms-transition: background 0.1s ease-in;
+    transition: background 0.1s ease-in;
+  }
+
+  input[type="file"] {
+    opacity: 0;
+  }
+  </style>
+    <h1>Instant iPhone X mockup.</h1>
+        <p class="instructions">
+    Best effect for 375x810 images. <br>For example this one: <a href="mockuphone-iphonex-example.png" target="_blank" download>download.</a> </p>
+    <div id="mup-container">
+      <div id="iphone-x" class="container grid-xl text-center">
+        <div class="columns">
+          <div class="column col-12">
+            <div class="device device-iphone-x animate">
+              <div class="device-frame">
+                <div class="device-content animate-bg" aria-labelledby="Drop an image here." ondrop="drop(event)" ondragover="allowDrop(event)">
+                  <label for="file-select" class="drop-text">Drop a screenshot here.</label>
+                  <input id="file-select" name="file-select" type="file" accept="image/*" onchange="drop(event)"/>
+                </div>
+              </div>
+              <div class="device-stripe"></div>
+              <div class="device-header"></div>
+              <div class="device-sensors"></div>
+              <div class="device-btns"></div>
+              <div class="device-power"></div>
+              <div class="device-home"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>📱 Powered by <a target="_blank" href="https://mockuphone.com"> MockUPhone</a> ← see more mockups
+    | 🍺 Credits to <a href="https://github.com/picturepan2/devices.css">devices.css</a> | <a href="https://github.com/oursky/iphone-x-mockup/">GitHub</a> </footer>
+
+    <script src="http://zeptojs.com/zepto.min.js"></script>
+    <script>
+      var content = $('.device-content');
+      var hintText = $('.drop-text');
+
+      function allowDrop(ev) {
+          ev.preventDefault();
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var files = ev.target.files || ev.dataTransfer.files;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          hintText.hide();
+          content.css('background-image', 'url(data:'+e.target.result+')');
+        }
+
+        reader.readAsDataURL(files[0]);
+      }
+    </script>
+  </body>
+  </html>
